@@ -83,7 +83,7 @@ public class CitasReactivaServiceImpl implements IcitasReactivaService {
 
     @Override
     public ArrayList<String> encontrarPatologiasByPacienteId(String id){
-        return this.pacientesReactivosRepository.findById(id).block().getPatologias();
+        //return this.pacientesReactivosRepository.findById(id).block().getPatologias();
         /*
         return this.pacientesReactivosRepository.findById(id)
                 .flatMap(paciente -> {
@@ -92,8 +92,9 @@ public class CitasReactivaServiceImpl implements IcitasReactivaService {
                     }
                     return null;
                 })
-                
+
          */
+        return this.pacientesReactivosRepository.findPatologiasById(id);
     }
 
 
