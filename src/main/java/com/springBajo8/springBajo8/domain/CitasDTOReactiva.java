@@ -4,11 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 @Document(collection = "citas")
-public class citasDTOReactiva {
+public class CitasDTOReactiva {
 
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
@@ -23,7 +22,7 @@ public class citasDTOReactiva {
 
     private String apellidosMedico;
 
-    private LocalDate fechaReservaCita;
+    private String fechaReservaCita;
 
     private String horaReservaCita;
 
@@ -77,11 +76,11 @@ public class citasDTOReactiva {
         this.apellidosMedico = apellidosMedico;
     }
 
-    public LocalDate getFechaReservaCita() {
+    public String getFechaReservaCita() {
         return fechaReservaCita;
     }
 
-    public void setFechaReservaCita(LocalDate fechaReservaCita) {
+    public void setFechaReservaCita(String fechaReservaCita) {
         this.fechaReservaCita = fechaReservaCita;
     }
 
@@ -101,7 +100,7 @@ public class citasDTOReactiva {
         this.estadoReservaCita = estadoReservaCita;
     }
 
-    //private Date sendedDate = new Date();
+
 
 
 }

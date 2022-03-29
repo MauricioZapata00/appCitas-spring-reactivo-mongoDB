@@ -1,7 +1,7 @@
 package com.springBajo8.springBajo8.web;
 
 
-import com.springBajo8.springBajo8.domain.citasDTOReactiva;
+import com.springBajo8.springBajo8.domain.CitasDTOReactiva;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,27 +11,27 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-public class citasReactivaResource {
+public class CitasReactivaResource {
 
     @Autowired
     private IcitasReactivaService icitasReactivaService;
 
     @PostMapping("/citasReactivas")
     @ResponseStatus(HttpStatus.CREATED)
-    private Mono<citasDTOReactiva> save(@RequestBody citasDTOReactiva citasDTOReactiva) {
+    private Mono<CitasDTOReactiva> save(@RequestBody CitasDTOReactiva citasDTOReactiva) {
         return this.icitasReactivaService.save(citasDTOReactiva);
     }
 
     @DeleteMapping("/citasReactivas/{id}")
-    private Mono<ResponseEntity<citasDTOReactiva>> delete(@PathVariable("id") String id) {
+    private Mono<ResponseEntity<CitasDTOReactiva>> delete(@PathVariable("id") String id) {
         return this.icitasReactivaService.delete(id)
-                .flatMap(citasDTOReactiva -> Mono.just(ResponseEntity.ok(citasDTOReactiva)))
+                .flatMap(CitasDTOReactiva -> Mono.just(ResponseEntity.ok(CitasDTOReactiva)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
 
     }
 
     @PutMapping("/citasReactivas/{id}")
-    private Mono<ResponseEntity<citasDTOReactiva>> update(@PathVariable("id") String id, @RequestBody citasDTOReactiva citasDTOReactiva) {
+    private Mono<ResponseEntity<CitasDTOReactiva>> update(@PathVariable("id") String id, @RequestBody CitasDTOReactiva citasDTOReactiva) {
         return this.icitasReactivaService.update(id, citasDTOReactiva)
                 .flatMap(citasDTOReactiva1 -> Mono.just(ResponseEntity.ok(citasDTOReactiva1)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
@@ -39,12 +39,12 @@ public class citasReactivaResource {
     }
 
     @GetMapping("/citasReactivas/{idPaciente}/byidPaciente")
-    private Flux<citasDTOReactiva> findAllByidPaciente(@PathVariable("idPaciente") String idPaciente) {
+    private Flux<CitasDTOReactiva> findAllByidPaciente(@PathVariable("idPaciente") String idPaciente) {
         return this.icitasReactivaService.findByIdPaciente(idPaciente);
     }
 
     @GetMapping(value = "/citasReactivas")
-    private Flux<citasDTOReactiva> findAll() {
+    private Flux<CitasDTOReactiva> findAll() {
         return this.icitasReactivaService.findAll();
     }
 
