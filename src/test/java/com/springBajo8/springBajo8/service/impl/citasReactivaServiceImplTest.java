@@ -27,7 +27,7 @@ CitasReactivaServiceImpl citasReactivaServiceImpl;
 
         Mono<CitasDTOReactiva> citaGuardada = citasReactivaServiceImpl.save(cita);
        //StepVerifier.create(citaGuardada).expectNext(citasReactivaServiceImpl.cancelarCita(cita.getId(),cita)).verifyComplete();
-
+//TODO por terminar
 
     }
 
@@ -55,10 +55,10 @@ CitasReactivaServiceImpl citasReactivaServiceImpl;
         citasReactivaServiceImpl.save(cita);
         citasReactivaServiceImpl.delete(cita.getId());
 
-       // Mono<CitasDTOReactiva> cita1=  citasReactivaServiceImpl.save(cita);
+
 
         Mono<CitasDTOReactiva> citaPaBorrar = citasReactivaServiceImpl.delete(cita.getId());
-        //StepVerifier.create(citaPaBorrar).expectNext(citasReactivaServiceImpl.delete("1")).verifyComplete();
+
         StepVerifier.create(citaPaBorrar).verifyComplete();
 
     }

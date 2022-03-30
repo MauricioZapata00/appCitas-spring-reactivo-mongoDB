@@ -1,8 +1,5 @@
 package com.springBajo8.springBajo8.service.impl;
 
-//import com.yoandypv.reactivestack.messages.domain.Message;
-//import com.yoandypv.reactivestack.messages.repository.MessageRepository;
-//import com.yoandypv.reactivestack.messages.service.MessageService;
 import com.springBajo8.springBajo8.domain.CitasDTOReactiva;
 import com.springBajo8.springBajo8.domain.PacientesDTOReactiva;
 import com.springBajo8.springBajo8.repository.IcitasReactivaRepository;
@@ -23,7 +20,6 @@ public class CitasReactivaServiceImpl implements IcitasReactivaService {
     @Autowired
     private IcitasReactivaRepository IcitasReactivaRepository;
 
-    //private static final Logger log = (Logger) LoggerFactory.getLogger(CitasReactivaServiceImpl.class);
     @Autowired
     private PacientesReactivosRepository pacientesReactivosRepository;
 
@@ -83,17 +79,7 @@ public class CitasReactivaServiceImpl implements IcitasReactivaService {
 
     @Override
     public ArrayList<String> encontrarPatologiasByPacienteId(String id){
-        //return this.pacientesReactivosRepository.findById(id).block().getPatologias();
-        /*
-        return this.pacientesReactivosRepository.findById(id)
-                .flatMap(paciente -> {
-                    if (paciente.getPatologias().size() > 0){
-                        return paciente.getPatologias();
-                    }
-                    return null;
-                })
 
-         */
         return this.pacientesReactivosRepository.findPatologiasById(id);
     }
 
